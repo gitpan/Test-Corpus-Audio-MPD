@@ -1,0 +1,5 @@
+Revision history for Test::Corpus::Audio::MPD
+
+1.092890  2009-10-16 13:54:25 UTC
+ - original release, taken from audio-mpd
+ - fixed to match mpd 0.15 behaviour
