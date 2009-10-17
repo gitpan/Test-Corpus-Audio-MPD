@@ -10,20 +10,22 @@ use strict;
 use warnings;
 
 package Test::Corpus::Audio::MPD;
-our $VERSION = '1.092890';
+our $VERSION = '1.092900';
 
 
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
-use File::Basename        qw{ fileparse };
+use File::Basename        qw{ fileparse      };
+use File::Copy            qw{ copy           };
 use File::Spec::Functions qw{ catdir catfile };
-use File::Temp            qw{ tempdir };
+use File::Temp            qw{ tempdir        };
 use Module::Util          qw{ find_installed };
 use Readonly;
 
 use base qw{ Exporter };
 our @EXPORT = qw{
     customize_test_mpd_configuration
+    playlist_dir
     start_test_mpd stop_test_mpd
 };
 
@@ -31,6 +33,7 @@ Readonly my $SHAREDIR => _find_share_dir();
 Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
 Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
 Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
+Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
 { # this will be run when module will be use-d
@@ -72,7 +75,16 @@ sub customize_test_mpd_configuration {
     # clean up.
     close $in;
     close $out;
+
+    # copy the playlists. playlist need to be in a writable directory,
+    # since tests will create and remove some playlists.
+    mkdir $PLAYLISTDIR;
+    copy( glob("$SHAREDIR/playlists/*"), $PLAYLISTDIR );
 }
+
+
+
+sub playlist_dir { $PLAYLISTDIR }
 
 
 
@@ -141,7 +153,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.092890
+version 1.092900
 
 =head1 SYNOPSIS
 
@@ -175,6 +187,37 @@ In case you want more control on the test mpd server, you can use the
 supplied public methods. This might be useful when trying to test
 connections with mpd server.
 
+=head1 SEE ALSO
+
+You can find more information on the mpd project on its homepage at
+L<http://www.musicpd.org>.wikia.com>.
+
+Original code (2005) by Tue Abrahamsen C<< <tue.abrahamsen@gmail.com> >>,
+documented in 2006 by Nicholas J. Humfrey C<< <njh@aelius.com> >>.
+
+C<Audio::MPD> development takes place on <audio-mpd@googlegroups.com>:
+feel free to join us. (use L<http://groups.google.com/group/audio-mpd>
+to sign in). Our git repository is located at
+L<http://github.com/jquelin/audio-mpd.git>.
+
+You can also look for information on this module at:
+
+=over 4
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Audio-MPD>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Audio-MPD>
+
+=item * Open bugs
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Audio-MPD>
+
+=back 
+
 =head1 METHODS
 
 =head2 customize_test_mpd_configuration( [$port] );
@@ -184,6 +227,12 @@ F<mpd.conf.template> located in F<share> subdir. The string PWD will be
 replaced by the real path (ie, where the tarball has been untarred),
 while TMP will be replaced by a new temp directory. The string PORT will
 be replaced by C<$port> if specified, 6600 otherwise (MPD's default).
+
+
+
+=head2 my $dir = $playlist_dir();
+
+Return the temp dir where the test playlists will be stored.
 
 
 
