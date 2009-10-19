@@ -6,11 +6,12 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 # 
+use 5.008;
 use strict;
 use warnings;
 
 package Test::Corpus::Audio::MPD;
-our $VERSION = '1.092900';
+our $VERSION = '1.092920';
 
 
 # ABSTRACT: automate launching of fake mdp for testing purposes
@@ -37,6 +38,13 @@ Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
 { # this will be run when module will be use-d
+
+    # check if mpd (the real music player daemon, not freebsd's
+    # multilink ppp daemon
+    my $output = qx{ mpd --version 2>&1 } or die "mpd not installed";
+    die "installed mpd is not music player daemon"
+        unless $output =~ /Music Player Daemon/;
+
     my $restart = 0;
     my $stopit  = 0;
 
@@ -153,7 +161,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.092900
+version 1.092920
 
 =head1 SYNOPSIS
 
