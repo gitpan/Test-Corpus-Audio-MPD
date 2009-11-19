@@ -11,7 +11,7 @@ use strict;
 use warnings;
 
 package Test::Corpus::Audio::MPD;
-our $VERSION = '1.092920';
+our $VERSION = '1.093230';
 
 
 # ABSTRACT: automate launching of fake mdp for testing purposes
@@ -30,10 +30,10 @@ our @EXPORT = qw{
     start_test_mpd stop_test_mpd
 };
 
-Readonly my $SHAREDIR => _find_share_dir();
-Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
-Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
-Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
+Readonly my $SHAREDIR    => _find_share_dir();
+Readonly my $TEMPLATE    => "$SHAREDIR/mpd.conf.template";
+Readonly my $TMPDIR      => tempdir( CLEANUP=>1 );
+Readonly my $CONFIG      => catfile( $TMPDIR, 'mpd.conf' );
 Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
@@ -152,7 +152,6 @@ sub _stop_user_mpd_if_needed {
 1;
 
 
-
 =pod
 
 =head1 NAME
@@ -161,7 +160,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.092920
+version 1.093230
 
 =head1 SYNOPSIS
 
@@ -195,37 +194,6 @@ In case you want more control on the test mpd server, you can use the
 supplied public methods. This might be useful when trying to test
 connections with mpd server.
 
-=head1 SEE ALSO
-
-You can find more information on the mpd project on its homepage at
-L<http://www.musicpd.org>.wikia.com>.
-
-Original code (2005) by Tue Abrahamsen C<< <tue.abrahamsen@gmail.com> >>,
-documented in 2006 by Nicholas J. Humfrey C<< <njh@aelius.com> >>.
-
-C<Audio::MPD> development takes place on <audio-mpd@googlegroups.com>:
-feel free to join us. (use L<http://groups.google.com/group/audio-mpd>
-to sign in). Our git repository is located at
-L<http://github.com/jquelin/audio-mpd.git>.
-
-You can also look for information on this module at:
-
-=over 4
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Audio-MPD>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Audio-MPD>
-
-=item * Open bugs
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Audio-MPD>
-
-=back 
-
 =head1 METHODS
 
 =head2 customize_test_mpd_configuration( [$port] );
@@ -236,25 +204,49 @@ replaced by the real path (ie, where the tarball has been untarred),
 while TMP will be replaced by a new temp directory. The string PORT will
 be replaced by C<$port> if specified, 6600 otherwise (MPD's default).
 
-
-
-=head2 my $dir = $playlist_dir();
+=head2 my $dir = playlist_dir();
 
 Return the temp dir where the test playlists will be stored.
-
-
 
 =head2 start_test_mpd();
 
 Start the fake mpd, and die if there were any error.
 
-
-
 =head2 stop_test_mpd();
 
 Kill the fake mpd.
 
+=head1 SEE ALSO
 
+You can look for information on this module at:
+
+=over 4
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Test-Corpus-Audio-MPD>
+
+=item * See open / report bugs
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Corpus-Audio-MPD>
+
+=item * Mailing-list (same as L<Audio::MPD>)
+
+L<http://groups.google.com/group/audio-mpd>
+
+=item * Git repository
+
+L<http://github.com/jquelin/test-corpus-audio-mpd>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Test-Corpus-Audio-MPD>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Test-Corpus-Audio-MPD>
+
+=back
 
 =head1 AUTHOR
 
@@ -267,8 +259,7 @@ This software is copyright (c) 2009 by Jerome Quelin.
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-=cut 
-
+=cut
 
 
 __END__

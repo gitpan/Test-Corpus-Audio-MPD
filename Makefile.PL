@@ -2,14 +2,16 @@
 use strict;
 use warnings;
 
+ BEGIN { require 5.008; } 
+
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
   DISTNAME  => 'Test-Corpus-Audio-MPD',
   NAME      => 'Test::Corpus::Audio::MPD',
-  AUTHOR    => 'Jerome\ Quelin',
-  ABSTRACT  => 'automate\ launching\ of\ fake\ mdp\ for\ testing\ purposes',
-  VERSION   => '1.092920',
+  AUTHOR    => "Jerome\ Quelin",
+  ABSTRACT  => "automate\ launching\ of\ fake\ mdp\ for\ testing\ purposes",
+  VERSION   => '1.093230',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
@@ -18,7 +20,6 @@ WriteMakefile(
     "English" => '0',
     "Readonly" => '0',
     "Test::More" => '0',
-    "perl" => '5.008',
     "File::Temp" => '0',
     "Module::Util" => '0',
     "File::Spec::Functions" => '0',

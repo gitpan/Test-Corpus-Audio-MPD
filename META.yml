@@ -2,7 +2,11 @@
 abstract: 'automate launching of fake mdp for testing purposes'
 author:
   - 'Jerome Quelin'
-generated_by: 'Dist::Zilla version 1.092680'
+build_requires:
+  Module::Build: 0.35
+configure_requires:
+  Module::Build: 0.35
+generated_by: 'Dist::Zilla version 1.093220'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -11,13 +15,12 @@ name: Test-Corpus-Audio-MPD
 provides:
   Test::Corpus::Audio::MPD:
     file: lib/Test/Corpus/Audio/MPD.pm
-    version: 1.092920
+    version: 1.093230
 requires:
   English: 0
   ExtUtils::MakeMaker: 0
   File::Basename: 0
   File::Copy: 0
-  File::Find: 0
   File::Spec::Functions: 0
   File::Temp: 0
   Module::Build: 0
@@ -30,4 +33,4 @@ resources:
   MailingList: http://groups.google.com/group/audio-mpd
   homepage: http://search.cpan.org/dist/Test-Corpus-Audio-MPD
   repository: http://github.com/jquelin/audio-mpd
-version: 1.092920
+version: 1.093230
