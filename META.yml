@@ -15,15 +15,12 @@ name: Test-Corpus-Audio-MPD
 provides:
   Test::Corpus::Audio::MPD:
     file: lib/Test/Corpus/Audio/MPD.pm
-    version: 1.100430
+    version: 1.100500
 requires:
   English: 0
   Exporter: 0
-  ExtUtils::MakeMaker: 6.11
   File::Copy: 0
   File::ShareDir: 0
-  File::ShareDir::Install: 0
-  File::Spec::Functions: 0
   File::Temp: 0
   Module::Build: 0.3601
   Path::Class: 0
@@ -34,4 +31,4 @@ resources:
   MailingList: http://groups.google.com/group/audio-mpd
   homepage: http://search.cpan.org/dist/Test-Corpus-Audio-MPD
   repository: http://github.com/jquelin/audio-mpd
-version: 1.100430
+version: 1.100500
