@@ -4,28 +4,39 @@ use warnings;
 
 use Module::Build 0.3601;
 
+
 my %module_build_args = (
-                       'dist_abstract' => 'automate launching of fake mdp for testing purposes',
-                       'script_files' => [],
-                       'license' => 'perl',
-                       'dist_name' => 'Test-Corpus-Audio-MPD',
-                       'dist_author' => [
-                                          'Jerome Quelin'
-                                        ],
-                       'share_dir' => 'share',
-                       'module_name' => 'Test::Corpus::Audio::MPD',
-                       'requires' => {
-                                       'Test::More' => 0,
-                                       'perl' => '5.008',
-                                       'File::Copy' => 0,
-                                       'File::ShareDir' => 0,
-                                       'English' => 0,
-                                       'File::Temp' => 0,
-                                       'Path::Class' => 0,
-                                       'Readonly' => 0,
-                                       'Exporter' => 0
-                                     }
-                     );
+  'build_requires' => {
+    'Module::Build' => '0.3601',
+    'Test::More' => '0.88'
+  },
+  'configure_requires' => {
+    'Module::Build' => '0.3601'
+  },
+  'dist_abstract' => 'automate launching of fake mdp for testing purposes',
+  'dist_author' => [
+    'Jerome Quelin'
+  ],
+  'dist_name' => 'Test-Corpus-Audio-MPD',
+  'dist_version' => '1.110600',
+  'license' => 'perl',
+  'module_name' => 'Test::Corpus::Audio::MPD',
+  'recommends' => {},
+  'recursive_test_files' => 1,
+  'requires' => {
+    'Exporter' => '0',
+    'File::Copy' => '0',
+    'File::ShareDir' => '0',
+    'File::Temp' => '0',
+    'Path::Class' => '0',
+    'Readonly' => '0',
+    'perl' => '5.008'
+  },
+  'script_files' => [],
+  'share_dir' => {
+    'dist' => 'share'
+  }
+);
 
 
 my $build = Module::Build->new(%module_build_args);

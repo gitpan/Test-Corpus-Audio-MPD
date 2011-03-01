@@ -2,6 +2,7 @@ Build.PL
 Changes
 LICENSE
 MANIFEST
+META.json
 META.yml
 README
 dist.ini
@@ -13,7 +14,10 @@ share/music/dir2/album.ogg
 share/music/title.ogg
 share/playlists/test.m3u
 t/00-compile.t
-t/author-critic.t
-t/release-meta-yaml.t
+t/000-report-versions-tiny.t
+t/release-has-version.t
+t/release-kwalitee.t
+t/release-minimum-version.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+t/release-portability.t

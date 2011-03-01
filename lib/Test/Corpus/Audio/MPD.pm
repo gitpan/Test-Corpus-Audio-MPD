@@ -1,17 +1,19 @@
-# 
+#
 # This file is part of Test-Corpus-Audio-MPD
-# 
+#
 # This software is copyright (c) 2009 by Jerome Quelin.
-# 
+#
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
-# 
+#
 use 5.008;
 use strict;
 use warnings;
 
 package Test::Corpus::Audio::MPD;
-our $VERSION = '1.100500';
+BEGIN {
+  $Test::Corpus::Audio::MPD::VERSION = '1.110600';
+}
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
 use File::Copy            qw{ copy     };
@@ -94,7 +96,7 @@ sub playlist_dir { $PLAYLISTDIR }
 
 
 sub start_test_mpd {
-    my $output = qx{ mpd --create-db $CONFIG 2>&1 };
+    my $output = qx{ mpd $CONFIG 2>&1 };
     die "could not start fake mpd: $output\n" if $output;
     sleep 1;   # wait 1 second to let mpd start.
     return 1;
@@ -145,7 +147,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.100500
+version 1.110600
 
 =head1 SYNOPSIS
 
@@ -236,7 +238,7 @@ L<http://cpanratings.perl.org/d/Test-Corpus-Audio-MPD>
 
 =head1 AUTHOR
 
-  Jerome Quelin
+Jerome Quelin
 
 =head1 COPYRIGHT AND LICENSE
 
