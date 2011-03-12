@@ -4,7 +4,7 @@
       "Jerome Quelin"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.102400",
+   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580",
    "license" : [
       "perl_5"
    ],
@@ -44,7 +44,7 @@
    "provides" : {
       "Test::Corpus::Audio::MPD" : {
          "file" : "lib/Test/Corpus/Audio/MPD.pm",
-         "version" : "1.110600"
+         "version" : "1.110710"
       }
    },
    "release_status" : "stable",
@@ -61,7 +61,7 @@
       },
       "x_MailingList" : "http://groups.google.com/group/audio-mpd"
    },
-   "version" : "1.110600",
+   "version" : "1.110710",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -103,11 +103,6 @@
             "class" : "Dist::Zilla::Plugin::PodSyntaxTests",
             "name" : "@Filter/PodSyntaxTests",
             "version" : "4.200004"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::PortabilityTests",
-            "name" : "@Filter/PortabilityTests",
-            "version" : "1.101420"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReportVersions::Tiny",

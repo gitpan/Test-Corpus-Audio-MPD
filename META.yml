@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,7 +17,7 @@ name: Test-Corpus-Audio-MPD
 provides:
   Test::Corpus::Audio::MPD:
     file: lib/Test/Corpus/Audio/MPD.pm
-    version: 1.110600
+    version: 1.110710
 requires:
   Exporter: 0
   File::Copy: 0
@@ -31,7 +31,7 @@ resources:
   homepage: http://search.cpan.org/dist/Test-Corpus-Audio-MPD/
   repository: git://github.com/jquelin/test-corpus-audio-mpd.git
   x_MailingList: http://groups.google.com/group/audio-mpd
-version: 1.110600
+version: 1.110710
 x_Dist_Zilla:
   plugins:
     -
@@ -66,10 +66,6 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Filter/PodSyntaxTests'
       version: 4.200004
-    -
-      class: Dist::Zilla::Plugin::PortabilityTests
-      name: '@Filter/PortabilityTests'
-      version: 1.101420
     -
       class: Dist::Zilla::Plugin::ReportVersions::Tiny
       name: '@Filter/ReportVersions::Tiny'
