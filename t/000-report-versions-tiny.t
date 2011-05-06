@@ -50,7 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Exporter','any version') };
 eval { $v .= pmver('File::Copy','any version') };
-eval { $v .= pmver('File::ShareDir','any version') };
+eval { $v .= pmver('File::ShareDir::PathClass','any version') };
 eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('Module::Build','0.3601') };
 eval { $v .= pmver('Path::Class','any version') };

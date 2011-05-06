@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,11 +17,11 @@ name: Test-Corpus-Audio-MPD
 provides:
   Test::Corpus::Audio::MPD:
     file: lib/Test/Corpus/Audio/MPD.pm
-    version: 1.110710
+    version: 1.111260
 requires:
   Exporter: 0
   File::Copy: 0
-  File::ShareDir: 0
+  File::ShareDir::PathClass: 0
   File::Temp: 0
   Path::Class: 0
   Readonly: 0
@@ -31,7 +31,7 @@ resources:
   homepage: http://search.cpan.org/dist/Test-Corpus-Audio-MPD/
   repository: git://github.com/jquelin/test-corpus-audio-mpd.git
   x_MailingList: http://groups.google.com/group/audio-mpd
-version: 1.110710
+version: 1.111260
 x_Dist_Zilla:
   plugins:
     -
@@ -117,7 +117,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Bugtracker
       name: '@Filter/Bugtracker'
-      version: 1.102670
+      version: 1.111080
     -
       class: Dist::Zilla::Plugin::Homepage
       name: '@Filter/Homepage'
@@ -129,7 +129,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaProvides::Package
       name: '@Filter/MetaProvides::Package'
-      version: 1.12044908
+      version: 1.12060501
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Filter/MetaConfig'
@@ -163,25 +163,33 @@ x_Dist_Zilla:
       name: '@Filter/CheckChangeLog'
       version: 0.01
     -
-      class: Dist::Zilla::Plugin::UploadToCPAN
-      name: '@Filter/UploadToCPAN'
-      version: 4.200004
-    -
       class: Dist::Zilla::Plugin::Git::Check
-      name: '@Filter/Git/Check'
+      name: '@Filter/Git::Check'
       version: 1.110500
     -
       class: Dist::Zilla::Plugin::Git::Commit
-      name: '@Filter/Git/Commit'
+      name: '@Filter/Git::Commit'
+      version: 1.110500
+    -
+      class: Dist::Zilla::Plugin::Git::CommitBuild
+      name: '@Filter/Git::CommitBuild'
       version: 1.110500
     -
       class: Dist::Zilla::Plugin::Git::Tag
-      name: '@Filter/Git/Tag'
+      name: '@Filter/TagMaster'
+      version: 1.110500
+    -
+      class: Dist::Zilla::Plugin::Git::Tag
+      name: '@Filter/TagRelease'
       version: 1.110500
     -
       class: Dist::Zilla::Plugin::Git::Push
-      name: '@Filter/Git/Push'
+      name: '@Filter/Git::Push'
       version: 1.110500
+    -
+      class: Dist::Zilla::Plugin::UploadToCPAN
+      name: '@Filter/UploadToCPAN'
+      version: 4.200004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'

@@ -12,13 +12,13 @@ use warnings;
 
 package Test::Corpus::Audio::MPD;
 BEGIN {
-  $Test::Corpus::Audio::MPD::VERSION = '1.110710';
+  $Test::Corpus::Audio::MPD::VERSION = '1.111260';
 }
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
-use File::Copy            qw{ copy     };
-use File::ShareDir        qw{ dist_dir };
-use File::Temp            qw{ tempdir  };
+use File::Copy                qw{ copy     };
+use File::ShareDir::PathClass qw{ dist_dir };
+use File::Temp                qw{ tempdir  };
 use Path::Class;
 use Readonly;
 
@@ -29,7 +29,7 @@ our @EXPORT = qw{
     start_test_mpd stop_test_mpd
 };
 
-Readonly my $SHAREDIR    => dir( dist_dir('Test-Corpus-Audio-MPD') );
+Readonly my $SHAREDIR    => dist_dir('Test-Corpus-Audio-MPD');
 Readonly my $TEMPLATE    => $SHAREDIR->file( 'mpd.conf.template' );
 Readonly my $TMPDIR      => dir( tempdir( CLEANUP=>1 ) );
 Readonly my $CONFIG      => $TMPDIR->file( 'mpd.conf' );
@@ -97,7 +97,8 @@ sub playlist_dir { $PLAYLISTDIR }
 
 sub start_test_mpd {
     my $output = qx{ mpd $CONFIG 2>&1 };
-    die "could not start fake mpd: $output\n" if $output;
+    my $rv = $? >>8;
+    die "could not start fake mpd: $output\n" if $rv;
     sleep 1;   # wait 1 second to let mpd start.
     return 1;
 }
@@ -147,7 +148,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.110710
+version 1.111260
 
 =head1 SYNOPSIS
 

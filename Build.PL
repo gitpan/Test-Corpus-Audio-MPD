@@ -18,7 +18,7 @@ my %module_build_args = (
     'Jerome Quelin'
   ],
   'dist_name' => 'Test-Corpus-Audio-MPD',
-  'dist_version' => '1.110710',
+  'dist_version' => '1.111260',
   'license' => 'perl',
   'module_name' => 'Test::Corpus::Audio::MPD',
   'recommends' => {},
@@ -26,7 +26,7 @@ my %module_build_args = (
   'requires' => {
     'Exporter' => '0',
     'File::Copy' => '0',
-    'File::ShareDir' => '0',
+    'File::ShareDir::PathClass' => '0',
     'File::Temp' => '0',
     'Path::Class' => '0',
     'Readonly' => '0',
